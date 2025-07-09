@@ -37,14 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
+    'corsheaders',        # para CORS
     'loginapp',
     'rest_framework',
-
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # debe ir arriba del middleware de seguridad
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -121,7 +120,21 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Configuración para CORS y React
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # puerto donde corre React por defecto
+]
+
+# Si quieres permitir todas las peticiones (solo para desarrollo):
+# CORS_ALLOW_ALL_ORIGINS = True
+
+# Para permitir envío de cookies/sesión entre frontend y backend:
+CORS_ALLOW_CREDENTIALS = True
