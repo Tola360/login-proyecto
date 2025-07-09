@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-&0qw2ln4^_i2ndm^2!8@#xnfd4l81)1)3gden+_)roux$@)_ss
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.elasticbeanstalk.com', 'localhost', '127.0.0.1']
+
 
 
 # Application definition
@@ -40,6 +42,7 @@ INSTALLED_APPS = [
     'corsheaders',        # para CORS
     'loginapp',
     'rest_framework',
+    
 ]
 
 MIDDLEWARE = [
@@ -138,3 +141,7 @@ CORS_ALLOWED_ORIGINS = [
 
 # Para permitir envío de cookies/sesión entre frontend y backend:
 CORS_ALLOW_CREDENTIALS = True
+
+import os
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
